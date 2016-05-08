@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-8">
+    <table class="table">
+      <div class="row">
+        <div class="col-sm-6" align="left">组织架构列表</div>
+        <div class="col-sm-6" align="right"><%= link_to '新建组织', new_category_path %></div>
+      </div>
+      <tbody>
+      <% @categories.each do |category| %>
+              <tr>
+                <td><%= link_to "#{'-' * category.level} #{category.name}" , category_path(category) %></td>
+                <td><%= link_to '编辑', edit_category_path(category) %></td>
+                <td><%= link_to '删除', category_path(category), method: :delete %></td>
+                <td><%= category.created_at.to_s(:db) %></td>
+              </tr>
+
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

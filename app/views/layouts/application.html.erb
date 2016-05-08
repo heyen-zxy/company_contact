@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= get_title %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to '公司通讯录管理系统', users_path, class: 'navbar-brand' %>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="<%= get_active :users %>"><%= link_to '员工一览', users_path %></li>
+          <li class="<%= get_active :categories %>"><%= link_to '组织架构一览', categories_path %></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <% flash.each do |key, value| %>
+    <% if value.present? %>
+        <div class="alert alert-block alert-<%= switch_key(key) %>">
+          <% if key.to_s == 'info'%>
+              <i class="icon-hand-right"></i>
+              <%= value %>
+          <% end %>
+          <button class="close" data-dismiss="alert">
+            <i class="icon-remove"></i>
+          </button>
+          <% if key.to_s != 'info'%>
+              <i class="icon-ok green"></i>
+              <%= value %>
+          <% end %>
+          <%- flash.delete(key) -%>
+        </div>
+    <% end %>
+<% end %>
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
+</html>

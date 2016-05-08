@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-8">
+    <table class="table">
+      <div class="row">
+        <div class="col-sm-6" align="left">员工列表</div>
+        <div class="col-sm-6" align="right"><%= link_to '新建员工', new_user_path %></div>
+      </div>
+      <tbody>
+      <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to "#{'-' * user.category.level} #{user.category.name}", category_path(user.category) %></td>
+            <td><%= link_to user.name, user_path(user) %></td>
+            <td><%= user.tel %></td>
+            <td><%= user.address %></td>
+            <td><%= link_to '编辑', edit_user_path(user) %></td>
+            <td><%= link_to '删除', user_path(user), method: :delete %></td>
+            <td><%= user.created_at.to_s(:db) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= paginate @users, :params => params%>
+  </div>
+
+</div>

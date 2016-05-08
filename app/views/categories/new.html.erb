@@ -1,0 +1,11 @@
+<%= error_messages_for :category%>
+<div class="row">
+  <div class="col-sm-5">
+    <%= form_for @category, url: categories_path do |f| %>
+        <%= render partial: 'categories/form', locals: {f: f} %>
+
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+  </div>
+</div>

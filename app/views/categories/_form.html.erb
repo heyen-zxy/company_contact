@@ -1,0 +1,10 @@
+<div class="form_content">
+  <%= f.label :parent_id, "上级组织名" %>
+
+  <%= f.select :parent_id, nested_set_options(Category, @category) {|i| "#{'-' * i.level} #{i.try(:name)}"}, {include_blank: true},  class: "form-control" %>
+
+  <%= f.label :name, raw("组织名#{get_fill}") %>
+  <%= f.text_field :name, class: "form-control" %>
+
+</div>
+<%= f.submit "提交", class: "btn btn-primary" %>

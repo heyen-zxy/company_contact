@@ -1,0 +1,14 @@
+zh-CN:
+  activerecord:
+    models:
+      user: "员工"
+      category: "组织架构"
+    attributes:
+      user:
+         category_id: "组织名"
+         name: "姓名"
+         tel: "电话号码"
+         address: "地址"
+      cateory:
+        parent_id: '上级组织名'
+        name: "组织名"

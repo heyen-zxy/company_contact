@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-6">
+    <table class="table">
+      <div class="row">
+        <div class="col-sm-4" align="left">员工信息</div>
+      </div>
+      <tbody>
+          <tr>
+            <th>上级组织名:</th>
+            <td><%= @category.parent.try(:name) %></td>
+          </tr>
+          <tr>
+            <th>组织名:</th>
+            <td><%= @category.name %></td>
+          </tr>
+      </tbody>
+    </table>
+    <div class="center">
+      <%= link_to(categories_path, class: 'btn btn-small btn') do%>
+          <i class="icon-on-left icon-arrow-left"></i>
+          回到一览
+          <i class="icon-undo bigger-150 middle"></i>
+      <% end %>
+    </div>
+  </div>
+
+</div>
