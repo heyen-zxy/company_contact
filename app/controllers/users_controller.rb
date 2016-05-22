@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @users = User.joins(:category).order('categories.lft, users.updated_at desc').page(params[:page]).per(20)
   end

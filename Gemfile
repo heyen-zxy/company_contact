@@ -52,4 +52,7 @@ end
 gem 'paranoia', '~> 2.0'
 gem 'awesome_nested_set'
 gem 'kaminari'
+gem 'whenever'
+gem 'devise'
+gem 'cancancan', '~> 1.10'
 
