@@ -55,4 +55,5 @@ gem 'kaminari'
 gem 'whenever'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
+gem 'rolify'
 

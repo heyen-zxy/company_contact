@@ -2,7 +2,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(admin)
-    pp admin, 1111
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
@@ -30,24 +29,21 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    if admin.admin?
+    if admin.has_role? :admin
         can :manage, :all
     end
 
-    if admin.normal_admin?
-      can_session
-      can :manage, :users
+    if admin.has_role? :normal
+      can :manage, User
+      can :read, Category
     end
 
-    if admin.user?
-      can_session
-      can :read, :users
+    if admin.has_role? :user
+      can :read, User
+      can :read, Category
     end
 
-    def can_session
-      # 登陆后各个权限都可以的操作
-      can :manage, :admin_session # login相关操作
-    end
+
 
   end
 end

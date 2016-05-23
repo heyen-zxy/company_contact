@@ -1,7 +1,7 @@
 <div class="form_content">
   <%= f.label :category_id, raw("组织#{get_fill}") %>
 
-  <%= f.select :category_id, nested_set_options(Category, @user.category) {|i| "#{'-' * i.level} #{i.name}" }, {include_blank: true},  class: "form-control" %>
+  <%= f.select :category_id, nested_set_options(Category, @user.category) {|i| "#{'-' * i.level} #{i.name}" }, {selected: @user.category_id, include_blank: true},  class: "form-control" %>
 
   <%= f.label :name, raw("姓名#{get_fill}") %>
   <%= f.text_field :name, class: "form-control" %>
